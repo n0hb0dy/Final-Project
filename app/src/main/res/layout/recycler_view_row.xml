@@ -29,7 +29,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:gravity="center"
-                android:text="@string/.NET"
+                android:text="@string/DAX"
                 android:textAlignment="center"
                 android:textColor="@color/tanAccent"
                 android:textSize="36sp"

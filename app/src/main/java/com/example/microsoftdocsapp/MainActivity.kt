@@ -2,25 +2,30 @@ package com.example.microsoftdocsapp
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import com.example.microsoftdocsapp.DocsModel
+import androidx.recyclerview.widget.RecyclerView
 import kotlin.collections.ArrayList
 
 
 class MainActivity : AppCompatActivity() {
 
-    private var docsModel : ArrayList<DocsModel> = ArrayList();
+    private lateinit var docsModel : ArrayList<DocsModel>;
+    private lateinit var recyclerView: RecyclerView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity)
+
+        setUpDocsMadel()
 
     }
 
     private fun setUpDocsMadel(): Unit {
         val docsNames: Array<String> = resources.getStringArray(R.array.products)
 
-        for (i in 1..docsNames.size){
+        for (i in 0..docsNames.size){
             docsModel.add(DocsModel(docsNames[i]))
         }
+
+        recyclerView.adapter = D_RecyclerViewAdapter(docsModel)
     }
 }

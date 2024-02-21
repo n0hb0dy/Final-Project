@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Microsoft Docs App</string>
-    <string name=".NET">.NET</string>
-    <string name=".NET_MAUI">.NET MAUI</string>
+    <string name="NET">.NET</string>
+    <string name="NET_MAUI">.NET MAUI</string>
     <string name="Adaptive_Cards">Adaptive_Cards</string>
     <string name="ASP.NET_Core">ASP.NET_Core</string>
     <string name="Azure">Azure</string>

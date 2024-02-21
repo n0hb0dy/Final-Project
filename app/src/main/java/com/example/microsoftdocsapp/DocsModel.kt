@@ -1,8 +1,8 @@
 package com.example.microsoftdocsapp
 
-class DocsModel (val productName: String = ""){
+data class DocsModel (val productName: String){
     override fun toString(): String {
-        return "DocsModel()"
+        return "DocsModel for $productName"
     }
 
     override fun equals(other: Any?): Boolean {
