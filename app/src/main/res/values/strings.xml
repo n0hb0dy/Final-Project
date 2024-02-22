@@ -1,5 +1,6 @@
 <resources>
-    <string name="app_name">Microsoft Docs App</string>
+    <string name="app_name">Microsoft Documentation</string>
+    <string name="arrow_description">Next Arrow</string>
     <string-array name="products">
         <item name=".NET">.NET</item>
         <item name=".NET_MAUI">.NET MAUI</item>
