@@ -3,10 +3,10 @@ package com.example.microsoftdocsapp
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
-import androidx.core.graphics.drawable.toDrawable
 import androidx.recyclerview.widget.RecyclerView
+import android.widget.TextView
+import android.widget.ImageView
+import androidx.core.graphics.drawable.toDrawable
 
 class DRecyclerViewAdapter(private val docModels: ArrayList<DocsModel>) :
     RecyclerView.Adapter<DRecyclerViewAdapter.MyViewHolder>() {
@@ -22,7 +22,7 @@ class DRecyclerViewAdapter(private val docModels: ArrayList<DocsModel>) :
 
     override fun onBindViewHolder(holder: MyViewHolder, i: Int) {
         holder.documentName.text = docModels[i].productName
-        holder.rightArrow.setImageDrawable(R.drawable.baseline_arrow_right_24.toDrawable())
+//        holder.rightArrow.setImageDrawable(R.drawable.baseline_arrow_right_24.toDrawable())
     }
 
     override fun getItemCount(): Int {
@@ -31,6 +31,6 @@ class DRecyclerViewAdapter(private val docModels: ArrayList<DocsModel>) :
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val documentName: TextView = itemView.findViewById(R.id.mainText)
-        val rightArrow: ImageView = itemView.findViewById(R.id.rightArrow)
+//        val rightArrow: ImageView = itemView.findViewById(R.id.rightArrow)
     }
 }

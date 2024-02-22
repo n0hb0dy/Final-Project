@@ -5,15 +5,15 @@ import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.microsoftdocsapp.databinding.ActivityMainBinding
+import com.example.microsoftdocsapp.databinding.WebviewActivityBinding
 
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var activityMainBinding: ActivityMainBinding
+    private lateinit var webViewerbinding: WebviewActivityBinding
 
     private var docsModel : ArrayList<DocsModel> = ArrayList()
-//    private lateinit var recyclerView: RecyclerView;
-//    private lateinit var webView: WebView;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
         return resources.getStringArray(R.array.products)
     }
     private fun setUpDocsModel(productNames: Array<String>) {
-        for (i in 0..<productNames.size)
-            docsModel.add(DocsModel(productNames[i]))
+        for (element in productNames)
+            docsModel.add(DocsModel(element))
 
 
         activityMainBinding.productsRV.layoutManager = LinearLayoutManager(this)
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 //    private fun setUpWebView(): Unit {
-//        activityMainBinding.webView.webViewClient = WebViewClient()
+//        webViewerBinding.webView.webViewClient = WebViewClient()
 //    }
 //    private fun goToWebsite(url: String ="https://learn.microsoft.com/en-us/power-automate/getting-started"): Unit {
 //        activityMainBinding.webView.apply {

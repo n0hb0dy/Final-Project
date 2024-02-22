@@ -1,7 +1,8 @@
 package com.example.microsoftdocsapp
 
-import android.widget.ImageView
+import java.net.URL
 
 data class DocsModel(
-    val productName: String
+    val productName: String,
+    val url: URL
 )
