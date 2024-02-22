@@ -1,31 +1,45 @@
 package com.example.microsoftdocsapp
 
 import android.os.Bundle
+import android.view.LayoutInflater
+import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.RecyclerView
-import kotlin.collections.ArrayList
+import com.example.microsoftdocsapp.databinding.ActivityMainBinding
 
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var docsModel : ArrayList<DocsModel>;
-    private lateinit var recyclerView: RecyclerView;
+//    private lateinit var docsModel : ArrayList<DocsModel>;
+//    private lateinit var recyclerView: RecyclerView;
+//    private lateinit var webView: WebView;
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
+        setContentView(binding.root)
 
-        setUpDocsMadel()
-
+        //setUpDocsMadel()
     }
 
-    private fun setUpDocsMadel(): Unit {
-        val docsNames: Array<String> = resources.getStringArray(R.array.products)
-
-        for (i in 0..docsNames.size){
-            docsModel.add(DocsModel(docsNames[i]))
+    private fun setUpWebView(): Unit {
+        binding.webView.webViewClient = WebViewClient()
+    }
+    private fun goToWebsite(url: String ="https://learn.microsoft.com/en-us/power-automate/getting-started"): Unit {
+        binding.webView.apply {
+            loadUrl(url)
+            settings.safeBrowsingEnabled = true
         }
-
-        recyclerView.adapter = D_RecyclerViewAdapter(docsModel)
     }
+
+//    private fun setUpDocsMadel(): Unit {
+//        val docsNames: Array<String> = resources.getStringArray(R.array.products)
+//
+//        for (i in 0..docsNames.size){
+//            docsModel.add(DocsModel(docsNames[i]))
+//        }
+//
+//        recyclerView.adapter = D_RecyclerViewAdapter(docsModel)
+//    }
 }
