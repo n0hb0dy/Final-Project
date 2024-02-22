@@ -13,8 +13,4 @@ data class DocsModel (val productName: String){
     override fun hashCode(): Int {
         return javaClass.hashCode()
     }
-
-    fun GetProductName() : String{
-        return productName;
-    }
 }
