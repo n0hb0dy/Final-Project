@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.microsoftdocsapp.databinding.ActivityMainBinding
 import com.example.microsoftdocsapp.databinding.WebviewActivityBinding
+import java.net.URL
 
 
 class MainActivity : AppCompatActivity() {
@@ -13,26 +14,29 @@ class MainActivity : AppCompatActivity() {
     private lateinit var activityMainBinding: ActivityMainBinding
     private lateinit var webViewerbinding: WebviewActivityBinding
 
-    private var docsModel : ArrayList<DocsModel> = ArrayList()
+    private var docModels : ArrayList<DocsModel> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         activityMainBinding = ActivityMainBinding.inflate(LayoutInflater.from(applicationContext))
         setContentView(activityMainBinding.MainConstraint)
 
-        setUpDocsModel(getProductNames())
+        setUpDocsModel(getProductNames(), getURLs())
     }
 
     private fun getProductNames() : Array<String>{
         return resources.getStringArray(R.array.products)
     }
-    private fun setUpDocsModel(productNames: Array<String>) {
-        for (element in productNames)
-            docsModel.add(DocsModel(element))
+    private fun getURLs() : Array<String>{
+        return resources.getStringArray(R.array.urls)
+    }
+    private fun setUpDocsModel(productNames: Array<String>, urls: Array<String>) {
+        for (element in productNames.zip(urls))
+            docModels.add(DocsModel(element.first, URL(element.second)))
 
 
         activityMainBinding.productsRV.layoutManager = LinearLayoutManager(this)
-        activityMainBinding.productsRV.adapter = DRecyclerViewAdapter(docsModel)
+        activityMainBinding.productsRV.adapter = DRecyclerViewAdapter(this@MainActivity, docModels)
         activityMainBinding.productsRV.setHasFixedSize(true)
     }
 
