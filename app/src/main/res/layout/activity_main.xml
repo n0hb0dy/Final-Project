@@ -8,15 +8,11 @@
     android:layout_height="match_parent" >
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/productsRV"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/main_fragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:visibility="visible"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:visibility="visible" />
+        android:name="com.example.microsoftdocsapp.RecyclerViewFragment"
+        tools:layout="@layout/fragment_recycler_view" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

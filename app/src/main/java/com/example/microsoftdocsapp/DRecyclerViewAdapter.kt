@@ -6,9 +6,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.cardview.widget.CardView
-import androidx.core.graphics.drawable.toDrawable
 
 class DRecyclerViewAdapter(private val mainActivity: MainActivity, private val docModels: ArrayList<DocsModel>) :
     RecyclerView.Adapter<DRecyclerViewAdapter.MyViewHolder>() {
@@ -27,7 +25,8 @@ class DRecyclerViewAdapter(private val mainActivity: MainActivity, private val d
         holder.rightArrow.setImageResource(R.drawable.baseline_arrow_right_24)
 
         holder.cardView.setOnClickListener{
-            Toast.makeText(mainActivity, docModels[i].productName, Toast.LENGTH_LONG).show()
+            mainActivity.changeFragment(WebViewerFragment())
+//            Toast.makeText(mainActivity, docModels[i].productName, Toast.LENGTH_LONG).show()
         }
     }
 

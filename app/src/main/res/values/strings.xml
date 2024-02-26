@@ -138,5 +138,7 @@
         <item name="Windows">https://learn.microsoft.com/en-us/windows/apps/get-started/start-here</item>
         <item name="Windows_Server">https://learn.microsoft.com/en-us/windows-server/get-started/get-started-with-windows-server</item>
     </string-array>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
 
 </resources>
