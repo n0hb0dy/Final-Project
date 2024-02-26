@@ -24,10 +24,10 @@ class DRecyclerViewAdapter(private val mainActivity: MainActivity, private val d
         holder.documentName.text = docModels[i].productName
         holder.rightArrow.setImageResource(R.drawable.baseline_arrow_right_24)
 
-        holder.cardView.setOnClickListener{
-            mainActivity.changeFragment(WebViewerFragment())
+//        holder.cardView.setOnClickListener{
+//            mainActivity.changeFragment(WebViewerFragment())
 //            Toast.makeText(mainActivity, docModels[i].productName, Toast.LENGTH_LONG).show()
-        }
+//        }
     }
 
     override fun getItemCount(): Int {
