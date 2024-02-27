@@ -2,12 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/navigation_home"
+        android:id="@+id/navigation_products"
         android:icon="@drawable/baseline_arrow_right_24"
-        android:title="MS Products" />
+        android:title="Products" />
 
     <item
-        android:id="@+id/navigation_dashboard"
+        android:id="@+id/navigation_documentation"
         android:icon="@drawable/baseline_arrow_right_24"
-        android:title="Docs" />
+        android:title="Documents" />
+
+
 </menu>
