@@ -1,4 +1,4 @@
-package com.example.deletethis.ui.products
+package com.example.microsoftdocsapp.ui.products
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
