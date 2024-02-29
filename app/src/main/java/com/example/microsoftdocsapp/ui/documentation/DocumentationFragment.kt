@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.deletethis.ui.documentation.DocumentationViewModel
+import com.example.microsoftdocsapp.ui.documentation.DocumentationViewModel
 import com.example.microsoftdocsapp.databinding.FragmentDocumentationBinding
 
 class DocumentationFragment : Fragment() {

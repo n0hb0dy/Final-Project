@@ -1,4 +1,4 @@
-package com.example.microsoftdocsapp
+package com.example.microsoftdocsapp.ui.products
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,10 +6,14 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import android.widget.TextView
 import android.widget.ImageView
+import android.widget.Toast
 import androidx.cardview.widget.CardView
+import com.example.microsoftdocsapp.MainActivity
+import com.example.microsoftdocsapp.R
+import java.net.URL
 
-class DRecyclerViewAdapter(private val mainActivity: MainActivity, private val docModels: ArrayList<DocsModel>) :
-    RecyclerView.Adapter<DRecyclerViewAdapter.MyViewHolder>() {
+class ProductsAdapter(private var productNames: Array<String>, private val urls: Array<String>) :
+    RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -21,7 +25,7 @@ class DRecyclerViewAdapter(private val mainActivity: MainActivity, private val d
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, i: Int) {
-        holder.documentName.text = docModels[i].productName
+        holder.documentName.text = productNames[i]
         holder.rightArrow.setImageResource(R.drawable.baseline_arrow_right_24)
 
 //        holder.cardView.setOnClickListener{
@@ -31,12 +35,18 @@ class DRecyclerViewAdapter(private val mainActivity: MainActivity, private val d
     }
 
     override fun getItemCount(): Int {
-        return docModels.size
+        return productNames.size
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val documentName: TextView = itemView.findViewById(R.id.mainText)
         val rightArrow: ImageView = itemView.findViewById(R.id.rightArrow)
-        val cardView: CardView = itemView.findViewById(R.id.documentCard)
+        init {
+            itemView.setOnClickListener{v: View ->
+                val position: Int = adapterPosition
+                Toast.makeText(itemView.context, "You clicked on iten #${position + 1}", Toast.LENGTH_SHORT).show()
+
+            }
+        }
     }
 }

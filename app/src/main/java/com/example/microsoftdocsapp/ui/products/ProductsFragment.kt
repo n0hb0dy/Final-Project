@@ -7,7 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.example.deletethis.ui.products.ProductsViewModel
+import androidx.recyclerview.widget.RecyclerView
+import com.example.microsoftdocsapp.ui.products.ProductsViewModel
 import com.example.microsoftdocsapp.databinding.FragmentProductsBinding
 
 class ProductsFragment : Fragment() {
@@ -23,16 +24,13 @@ class ProductsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val productsViewModel =
-            ViewModelProvider(this).get(ProductsViewModel::class.java)
-
         _binding = FragmentProductsBinding.inflate(inflater, container, false)
         val root: View = binding.root
 
-        val textView: TextView = binding.textDashboard
-        productsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        val recyclerView: RecyclerView = binding.productsRV
+
+
+
         return root
     }
 
