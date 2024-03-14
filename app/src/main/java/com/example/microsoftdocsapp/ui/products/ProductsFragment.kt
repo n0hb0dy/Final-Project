@@ -30,9 +30,9 @@ class ProductsFragment : Fragment() {
         val recyclerView: RecyclerView = view.findViewById(R.id.productsRV)
         initializeList(resources.getStringArray(R.array.products), resources.getStringArray(R.array.urls))
 
-        recyclerView.setHasFixedSize(true)
         recyclerView.layoutManager = LinearLayoutManager(context)
         recyclerView.adapter = ProductsAdapter(products)
+        recyclerView.setHasFixedSize(true)
 
         return view
     }
