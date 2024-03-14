@@ -47,7 +47,7 @@ class ProductsAdapter(private var products: ArrayList<ProductsViewModel>) :
         return products.size
     }
 
-    private fun replaceFragment(fragment: Fragment){
+    private fun replaceFragment(fragmen: Fragment){
         val fragmentManager: FragmentManager = binding.supportFragmentManager
         val fragmentTransition = fragmentManager.beginTransaction()
         fragmentTransition.replace(R.id.productsRV, fragment)
