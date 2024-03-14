@@ -8,4 +8,4 @@ import java.net.URL
 data class ProductsViewModel (
      val productName: String,
      val url: String
-)
+):java.io.Serializable

@@ -16,10 +16,6 @@ import java.net.URL
 
 class MainActivity : AppCompatActivity() {
 
-    private var products : ArrayList<ProductsViewModel> = ArrayList()
-    private var productNames = ArrayList<String>()
-    private var urls = ArrayList<URL>()
-
     private lateinit var activityMainBinding: ActivityMainBinding
     private lateinit var fragmentProductsBinding: FragmentProductsBinding
 
@@ -31,13 +27,11 @@ class MainActivity : AppCompatActivity() {
 
         fragmentProductsBinding = FragmentProductsBinding.inflate(layoutInflater)
 
-        initializeLists(resources.getStringArray(R.array.products), resources.getStringArray(R.array.urls))
+
 
         val navView: BottomNavigationView = activityMainBinding.navView
 
         val navController = findNavController(R.id.nav_host_fragment_activity_main)
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_products, R.id.navigation_documentation
@@ -45,15 +39,5 @@ class MainActivity : AppCompatActivity() {
         )
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-    }
-
-    private fun initializeLists(productNames: Array<String>, urls: Array<String>){
-        for (element in productNames.zip(urls))
-            products.add(ProductsViewModel(element.first, element.second))
-
-
-        fragmentProductsBinding.productsRV.layoutManager = LinearLayoutManager(this)
-        fragmentProductsBinding.productsRV.adapter = ProductsAdapter(productNames, urls)
-        fragmentProductsBinding.productsRV.setHasFixedSize(true)
     }
 }

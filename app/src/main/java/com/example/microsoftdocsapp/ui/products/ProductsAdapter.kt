@@ -8,11 +8,9 @@ import android.widget.TextView
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.cardview.widget.CardView
-import com.example.microsoftdocsapp.MainActivity
 import com.example.microsoftdocsapp.R
-import java.net.URL
 
-class ProductsAdapter(private var productNames: Array<String>, private val urls: Array<String>) :
+class ProductsAdapter(private var products: ArrayList<ProductsViewModel>) :
     RecyclerView.Adapter<ProductsAdapter.MyViewHolder>() {
 
     override fun onCreateViewHolder(
@@ -25,28 +23,28 @@ class ProductsAdapter(private var productNames: Array<String>, private val urls:
     }
 
     override fun onBindViewHolder(holder: MyViewHolder, i: Int) {
-        holder.documentName.text = productNames[i]
+        holder.documentName.text = products[i].productName
         holder.rightArrow.setImageResource(R.drawable.baseline_arrow_right_24)
 
-//        holder.cardView.setOnClickListener{
+        holder.cardView.setOnClickListener{
 //            mainActivity.changeFragment(WebViewerFragment())
 //            Toast.makeText(mainActivity, docModels[i].productName, Toast.LENGTH_LONG).show()
-//        }
+        }
     }
 
     override fun getItemCount(): Int {
-        return productNames.size
+        return products.size
     }
 
     inner class MyViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val documentName: TextView = itemView.findViewById(R.id.mainText)
         val rightArrow: ImageView = itemView.findViewById(R.id.rightArrow)
+        val cardView: CardView = itemView.findViewById(R.id.documentCard)
         init {
-            itemView.setOnClickListener{v: View ->
+            itemView.setOnClickListener{_: View ->
                 val position: Int = adapterPosition
-                Toast.makeText(itemView.context, "You clicked on iten #${position + 1}", Toast.LENGTH_SHORT).show()
-
+                products[adapterPosition].url
             }
-        }
+      }
     }
 }
