@@ -1,43 +1,39 @@
 package com.example.microsoftdocsapp.ui.products
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import com.example.deletethis.ui.products.ProductsViewModel
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.microsoftdocsapp.R
 import com.example.microsoftdocsapp.databinding.FragmentProductsBinding
 
-class ProductsFragment : Fragment() {
 
+class ProductsFragment : Fragment() {
     private var _binding: FragmentProductsBinding? = null
 
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val productsViewModel =
-            ViewModelProvider(this).get(ProductsViewModel::class.java)
-
+    ): View? {
         _binding = FragmentProductsBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val productCards = root.findViewById<RecyclerView>(R.id.productsRV)
 
-        val textView: TextView = binding.textDashboard
-        productsViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
-        }
+        productCards.layoutManager = LinearLayoutManager(this.context)
+
+        productCards.adapter = ProductCardsAdaptor(
+            arrayListOf<ProductCardsModel>(
+                ProductCardsModel("Test1", "https://www.google.com"),
+                ProductCardsModel("Test2", "https://www.youtube.com")
+                ))
+
+
         return root
     }
 
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
 }

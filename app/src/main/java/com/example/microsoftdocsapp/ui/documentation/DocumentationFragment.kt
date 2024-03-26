@@ -1,38 +1,42 @@
 package com.example.microsoftdocsapp.ui.documentation
 
 import android.os.Bundle
+import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
-import androidx.fragment.app.Fragment
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import androidx.lifecycle.ViewModelProvider
-import com.example.deletethis.ui.documentation.DocumentationViewModel
+import com.example.microsoftdocsapp.R
 import com.example.microsoftdocsapp.databinding.FragmentDocumentationBinding
+
 
 class DocumentationFragment : Fragment() {
 
     private var _binding: FragmentDocumentationBinding? = null
-
-    // This property is only valid between onCreateView and
-    // onDestroyView.
     private val binding get() = _binding!!
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        val documentationViewModel =
-            ViewModelProvider(this).get(DocumentationViewModel::class.java)
-
+    ): View? {
         _binding = FragmentDocumentationBinding.inflate(inflater, container, false)
         val root: View = binding.root
+        val webViewer = root.findViewById<WebView>(R.id.webViewer)
 
-        val textView: TextView = binding.textHome
-        documentationViewModel.text.observe(viewLifecycleOwner) {
-            textView.text = it
+        webViewer.webViewClient = object : WebViewClient() {
+            @Deprecated("Deprecated in Java")
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                if (url != null) {
+                    view?.loadUrl(url)
+                }
+                return true
+            }
         }
+
+        webViewer.loadUrl("https://www.geeksforgeeks.org/")
+
         return root
     }
 
